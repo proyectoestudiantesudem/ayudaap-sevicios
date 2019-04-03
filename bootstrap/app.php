@@ -6,6 +6,7 @@ use Ayudapp\Controllers\ContactController;
 $dotenv = Dotenv\Dotenv::create(BASE);
 $dotenv->load();
 //prueba
+//Comentario de pull request
 $app = new Slim\App(include_once BASE .  "bootstrap". DS ."database.php");
 $container = $app->getContainer();
 
