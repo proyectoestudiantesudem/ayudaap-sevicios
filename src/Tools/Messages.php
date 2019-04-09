@@ -6,6 +6,7 @@ namespace Ayudapp\Tools;
  */
 class Messages
 {
-	static public $ok = 101;	
+	static public $ok = 101;
+	static public $empty = 102;
 
 }
