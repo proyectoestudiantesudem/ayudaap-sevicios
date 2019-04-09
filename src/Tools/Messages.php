@@ -2,7 +2,7 @@
 namespace Ayudapp\Tools;
 
 /**
- * 
+ * Mensajes retornados al llamar los servicios
  */
 class Messages
 {
