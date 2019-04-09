@@ -6,7 +6,7 @@
  	
  	function all($request, $response){
  		$db = $this->db;
- 		$query = "SELECT * FROM contacts"; 
+ 		$query = "SELECT * FROM contactos"; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
@@ -19,7 +19,7 @@
 
  	function find($request, $response, $args){
  		$db = $this->db;
- 		$query = "SELECT * FROM contacts WHERE id = ". $args['id'].""; 
+ 		$query = "SELECT * FROM contactos WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
