@@ -25,9 +25,37 @@
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "All contact"
+ 				"message" => "Find contact"
  			], 200
  		);
  	}
+
+ 	function add($request, $response, $args){
+ 		$db = $this->db;
+ 		$query = "INSERT INTO contactos (Nombre, IdParentesco, Celular, IdTipoContacto, Prioridad) VALUES ('".$args['Nombre']."',". $args['IdParentesco'].", ". $args['Celular'].", ". $args['IdTipoContacto'].", ". $args['Prioridad'].")"; 
+ 		$result = $db->query($query);
+ 		echo $query;
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Add contact completed"
+ 			], 200
+ 		);
+ 	}
+
+ 	function delete($request, $response, $args){
+ 		$db = $this->db;
+ 		$query = "DELETE FROM contactos WHERE id = ". $args['id'].""; 
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Delete contact"
+ 			], 200
+ 		);
+ 	}
+
  }
 
