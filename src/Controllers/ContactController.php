@@ -57,5 +57,19 @@
  		);
  	}
 
+ 	function update($request, $response, $args){
+ 		$db = $this->db;
+ 		$query = "UPDATE contactos SET Nombre = ". $args['Nombre'].", IdParentesco = ". $args['IdParentesco'].", 
+ 					Celular = ". $args['Celular'].", IdTipoContacto = ". $args['IdTipoContacto'].", 
+ 					Prioridad = ". $args['Prioridad']." WHERE id = ". $args['id'].""; 
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Contact Updated"
+ 			], 200
+ 		);
+ 	}
  }
 
