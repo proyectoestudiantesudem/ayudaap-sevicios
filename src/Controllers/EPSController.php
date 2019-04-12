@@ -1,38 +1,38 @@
 <?php 
  namespace Ayudapp\Controllers;
 
- class ContactController extends Controller
+ class EPSController extends Controller
  {
  	
  	function all($request, $response){
  		$db = $this->db;
- 		$query = "SELECT * FROM contactos"; 
+ 		$query = "SELECT * FROM eps"; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "All contact"
+ 				"message" => "All EPS"
  			], 200
  		);
  	}
 
  	function find($request, $response, $args){
  		$db = $this->db;
- 		$query = "SELECT * FROM contactos WHERE id = ". $args['id'].""; 
+ 		$query = "SELECT * FROM eps WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Find contact"
+ 				"message" => "Specific EPS"
  			], 200
  		);
  	}
 
  	function add($request, $response, $args){
  		$db = $this->db;
- 		$query = "INSERT INTO contactos (Nombre, IdParentesco, Celular, IdTipoContacto, Prioridad) VALUES ('".$args['Nombre']."',". $args['IdParentesco'].", ". $args['Celular'].", ". $args['IdTipoContacto'].", ". $args['Prioridad'].")"; 
+ 		$query = "INSERT INTO eps (Nombre) VALUES ('".$args['Nombre']."')"; 
  		$result = $db->query($query);
  		echo $query;
 		return $response->withJson(
@@ -46,28 +46,26 @@
 
  	function delete($request, $response, $args){
  		$db = $this->db;
- 		$query = "DELETE FROM contactos WHERE id = ". $args['id'].""; 
+ 		$query = "DELETE FROM eps WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Delete contact"
+ 				"message" => "Delete EPS"
  			], 200
  		);
  	}
 
  	function update($request, $response, $args){
  		$db = $this->db;
- 		$query = "UPDATE contactos SET Nombre = ". $args['Nombre'].", IdParentesco = ". $args['IdParentesco'].", 
- 					Celular = ". $args['Celular'].", IdTipoContacto = ". $args['IdTipoContacto'].", 
- 					Prioridad = ". $args['Prioridad']." WHERE id = ". $args['id'].""; 
+ 		$query = "UPDATE eps SET Nombre = ". $args['Nombre']." WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Contact Updated"
+ 				"message" => "EPS Updated"
  			], 200
  		);
  	}
