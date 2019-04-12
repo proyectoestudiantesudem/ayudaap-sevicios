@@ -2,6 +2,7 @@
 require_once "../vendor/autoload.php";
 
 use Ayudapp\Controllers\ContactController;
+use Ayudapp\Controllers\CirugiaUsuarioController;
 
 $dotenv = Dotenv\Dotenv::create(BASE);
 $dotenv->load();
@@ -17,6 +18,10 @@ $container["db"]  =  function ($container) {
 
 $container["ContactController"] = function ($container) {
 	return new ContactController($container);
+};
+
+$container["CirugiaUsuarioController"] = function ($container) {
+	return new CirugiaUsuarioController($container);
 };
 
 require_once BASE . "src". DS ."routes.php";
