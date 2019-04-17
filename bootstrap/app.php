@@ -2,11 +2,11 @@
 require_once "../vendor/autoload.php";
 
 use Ayudapp\Controllers\ContactController;
+use Ayudapp\Controllers\UsuariosController;
 
 use Ayudapp\Controllers\CirugiaUsuarioController;
 
 use Ayudapp\Controllers\EPSController;
-use Ayudapp\Controllers\UsuariosController;
 
 
 $dotenv = Dotenv\Dotenv::create(BASE);
