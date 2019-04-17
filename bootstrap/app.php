@@ -4,11 +4,16 @@ require_once "../vendor/autoload.php";
 use Ayudapp\Controllers\ContactController;
 use Ayudapp\Controllers\UsuariosController;
 
+use Ayudapp\Controllers\CirugiaUsuarioController;
+
+use Ayudapp\Controllers\EPSController;
+
+
 $dotenv = Dotenv\Dotenv::create(BASE);
 $dotenv->load();
 //prueba
 //Comentario de pull request
-//comentario de prueba 3
+
 $app = new Slim\App(include_once BASE .  "bootstrap". DS ."database.php");
 $container = $app->getContainer();
 
@@ -20,11 +25,17 @@ $container["ContactController"] = function ($container) {
 	return new ContactController($container);
 };
 
-$container["UsuariosController"] = function ($container) {
-	return new UsuariosController($container);
+$container["CirugiaUsuarioController"] = function ($container) {
+	return new CirugiaUsuarioController($container);
+
+$container["EPSController"] = function ($container) {
+	return new EPSController($container);
 };
 
+$container["UsuariosController"] = function ($container) {
+	return new UsuariosController($container);
 
+};
 
 require_once BASE . "src". DS ."routes.php";
 $app->run();

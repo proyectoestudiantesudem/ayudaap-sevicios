@@ -1,75 +1,73 @@
 <?php 
  namespace Ayudapp\Controllers;
 
- class UsuariosController extends Controller
+ class EPSController extends Controller
  {
  	
  	function all($request, $response){
  		$db = $this->db;
- 		$query = "SELECT * FROM tipodealerta";
-    $result = $db->query($query);
+ 		$query = "SELECT * FROM eps"; 
+ 		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "All contact"
+ 				"message" => "All EPS"
  			], 200
  		);
  	}
 
  	function find($request, $response, $args){
  		$db = $this->db;
- 		$query = "SELECT * FROM tipodealerta WHERE id = ". $args['id'].""; 
+ 		$query = "SELECT * FROM eps WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Id especifico"
+ 				"message" => "Specific EPS"
  			], 200
  		);
  	}
 
- 	function agregar($request, $response, $args){
+ 	function add($request, $response, $args){
  		$db = $this->db;
- 		$query = "INSERT INTO tipodealerta(Id,Descripcion) VALUES (". $args['Id'].", '". $args['Descripcion']."')"; 
+ 		$query = "INSERT INTO eps (Nombre) VALUES ('".$args['Nombre']."')"; 
  		$result = $db->query($query);
+ 		echo $query;
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Agrego correctamente"
+ 				"message" => "Add contact completed"
  			], 200
  		);
  	}
 
- 		function eliminar($request, $response, $args){
+ 	function delete($request, $response, $args){
  		$db = $this->db;
- 		$query = "DELETE FROM tipodealerta WHERE id = ". $args['id'].""; 
+ 		$query = "DELETE FROM eps WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Elimino correctamente"
+ 				"message" => "Delete EPS"
  			], 200
  		);
  	}
 
- 	function actualizar($request, $response, $args){
+ 	function update($request, $response, $args){
  		$db = $this->db;
- 		$query = "UPDATE tipodealerta SET Id = ". $args['Id']." ,Descripcion = '". $args['Descripcion']."'
- 		WHERE id = ". $args['id']."";
+ 		$query = "UPDATE eps SET Nombre = ". $args['Nombre']." WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Actualizo correctamente"
+ 				"message" => "EPS Updated"
  			], 200
  		);
-
  	}
-
  }
 
