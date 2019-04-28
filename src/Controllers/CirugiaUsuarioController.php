@@ -21,6 +21,7 @@
  		);
  	}
 
+
  	/*
 	Consultar un registro especifico
  	*/
@@ -34,23 +35,6 @@
  				"status" => 101,
  				"data" => $result->fetchAll(),
  				"message" => "Uy, compilo :v"
- 			], 200
- 		);
- 	}
-
- 	/*
-	Eliminar un registro 
- 	*/
-
- 	function delete($request, $response, $args){
- 		$db = $this->db;
- 		$query = "DELETE FROM cirugiausuario WHERE id = ". $args['id'].""; 
- 		$result = $db->query($query);
-		return $response->withJson(
- 			[
- 				"status" => 1z01,
- 				"data" => $result->fetchAll(),
- 				"message" => "Uy, compilo la que elimina :v"
  			], 200
  		);
  	}
@@ -73,6 +57,25 @@
  		);
  	}
 
+
+ 	/*
+	Eliminar un registro 
+ 	*/
+
+ 	function delete($request, $response, $args){
+ 		$db = $this->db;
+ 		$query = "DELETE FROM cirugiausuario WHERE id = ". $args['id'].""; 
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Uy, compilo la que elimina :v"
+ 			], 200
+ 		);
+ 	}
+
+
  	/*
 	Editar un registro 
  	*/
@@ -91,25 +94,8 @@
  		);
  	}
 
- 	/*
-	Restricciones
- 	*/
 
- 	function restrict($request, $response){
- 		$db = $this->db;
- 		$query = "ALTER TABLE cirugiausuario
-		ADD FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
-    	ON UPDATE CASCADE
-    	ON DELETE CASCADE"; 
- 		$result = $db->query($query);
-		return $response->withJson(
- 			[
- 				"status" => 101,
- 				"data" => $result->fetchAll(),
- 				"message" => "Uy, compilo la que edita:v"
- 			], 200
- 		);
- 	}
 
- }
+
+}
 
