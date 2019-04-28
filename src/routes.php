@@ -1,5 +1,6 @@
 <?php
 
+
 $app->get('/tipodealerta', "AlertasController:all");
 $app->get('/tipodealerta/{id}', "AlertasController:find");
 $app->get('/crear_tipodealerta/{Descripcion}', "AlertasController:agregar");
@@ -37,7 +38,9 @@ $app->get('/actualizar_contacto/{id}/{Nombre}/{IdParentesco}/{Celular}/
 	{IdTipoContacto}/{Prioridad}', "ContactController:update");
 
 
-
-//$app->get('/usuarios', "UsuariosController:all");
-
+$app->get('/usuario', "UsuarioController:all");
+$app->get('/medicamento', "MedicamentoController:all");
+$app->get('/usuario/{id}', "UsuarioController:find");
+$app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
+$app->get('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");
 
