@@ -1,7 +1,7 @@
 <?php 
  namespace Ayudapp\Controllers;
 
- class UsuariosController extends Controller
+ class AlertasController extends Controller
  {
  	
  	function all($request, $response){
@@ -32,7 +32,7 @@
 
  	function agregar($request, $response, $args){
  		$db = $this->db;
- 		$query = "INSERT INTO tipodealerta(Id,Descripcion) VALUES (". $args['Id'].", '". $args['Descripcion']."')"; 
+ 		$query = "INSERT INTO tipodealerta(Descripcion) VALUES ('". $args['Descripcion']."')";
  		$result = $db->query($query);
 		return $response->withJson(
  			[
@@ -58,8 +58,7 @@
 
  	function actualizar($request, $response, $args){
  		$db = $this->db;
- 		$query = "UPDATE tipodealerta SET Id = ". $args['Id']." ,Descripcion = '". $args['Descripcion']."'
- 		WHERE id = ". $args['id']."";
+ 		$query = "UPDATE tipodealerta SET Id = ". $args['Id']." ,Descripcion = '". $args['Descripcion']."' 	WHERE id = ". $args['Id']."";
  		$result = $db->query($query);
 		return $response->withJson(
  			[

@@ -1,33 +1,42 @@
 <?php
-$app->get('/contact', "ContactController:all");
 
-$app->get('/tipodealerta', "UsuariosController:all");
-$app->get('/contact/{id}', "ContactController:find");
-$app->get('/tipodealerta/buscarRegistro/{id}', "UsuariosController:find");
-$app->get('/tipodealerta/agregarRegistro/{Id}/{Descripcion}', "UsuariosController:agregar");
-$app->get('/tipodealerta/eliminarRegistro/{id}', "UsuariosController:eliminar");
-$app->get('/tipodealerta/actualizarRegistro/{id}/{Id}/{Descripcion}', "UsuariosController:actualizar");
-
+$app->get('/tipodealerta', "AlertasController:all");
+$app->get('/tipodealerta/{id}', "AlertasController:find");
+$app->get('/crear_tipodealerta/{Descripcion}', "AlertasController:agregar");
+$app->get('/eliminar_tipodealerta/{id}', "AlertasController:eliminar");
+$app->get('/editar_tipodealerta/{Id}/{Descripcion}', "AlertasController:actualizar");
 
 $app->get('/cirugia_usuario', "CirugiaUsuarioController:all");
-$app->get('/cirugia_usuario/buscar/{id}', "CirugiaUsuarioController:find");
-$app->get('/cirugia_usuario/eliminar/{id}', "CirugiaUsuarioController:delete");
-$app->get('/cirugia_usuario/agregar/{IdUsuario}/{Descripcion}', "CirugiaUsuarioController:add");
-$app->get('/cirugia_usuario/editar/{id}/{IdUsuario}/{Descripcion}', "CirugiaUsuarioController:edit");
-$app->get('/cirugia_usuario/restricciones', "CirugiaUsuarioController:restrict");
+$app->get('/cirugia_usuario/{id}', "CirugiaUsuarioController:find");
+$app->get('/agregar_cirugia_usuario/{IdUsuario}/{Descripcion}', "CirugiaUsuarioController:add");
+$app->get('/eliminar_cirugia_usuario/{id}', "CirugiaUsuarioController:delete");
+$app->get('/editar_cirugia_usuario/{id}/{IdUsuario}/{Descripcion}', "CirugiaUsuarioController:edit");
 
-$app->get('/contact/{id}', "ContactController:find");
-$app->get('/contact/{id}/{Mod}', "ContactController:delete");
-$app->get('/contact/{Nombre}/{IdParentesco}/{Celular}/
-	{IdTipoContacto}/{Prioridad}', "ContactController:add");
-$app->get('/contact/{id}/{Nombre}/{IdParentesco}/{Celular}/
-	{IdTipoContacto}/{Prioridad}', "ContactController:update");
+
 
 $app->get('/eps', "EPSController:all");
+
+
 $app->get('/eps/{id}', "EPSController:find");
-$app->get('/eps/{id}/{Mod}', "EPSController:delete");
-$app->get('/eps/{Nombre}', "EPSController:add");
-$app->get('/eps/{id}/{Nombre}', "EPSController:update");
+$app->get('/crear_eps/{Nombre}', "EPSController:add");
+
+$app->get('/eliminar_eps/{id}', "EPSController:delete");
+
+$app->get('/editar_eps/{id}/{Nombre}', "EPSController:update");
+
+
+
+
+$app->get('/contacto', "ContactController:all");
+$app->get('/contacto/{id}', "ContactController:find");
+$app->get('/eliminar_contacto/{id}', "ContactController:delete");
+$app->get('/crear_contacto/{Nombre}/{IdParentesco}/{Celular}/
+	{IdTipoContacto}/{Prioridad}', "ContactController:add");
+
+$app->get('/actualizar_contacto/{id}/{Nombre}/{IdParentesco}/{Celular}/
+	{IdTipoContacto}/{Prioridad}', "ContactController:update");
+
+
 
 //$app->get('/usuarios', "UsuariosController:all");
 

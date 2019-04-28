@@ -59,7 +59,7 @@
 
  	function update($request, $response, $args){
  		$db = $this->db;
- 		$query = "UPDATE eps SET Nombre = ". $args['Nombre']." WHERE id = ". $args['id'].""; 
+ 		$query = "UPDATE eps SET Nombre = '". $args['Nombre']."' WHERE id = ". $args['id']; 
  		$result = $db->query($query);
 		return $response->withJson(
  			[
