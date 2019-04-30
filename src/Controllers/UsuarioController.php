@@ -60,13 +60,19 @@
  	function login($request, $response){
  		$args = $request->getParams(); 		
  		$db = $this->db;
- 		$query = "SELECT Id, Nombre, Contrasena FROM usuario WHERE Email = '". $args['email']."' and Contrasena = '".$args['contrasena']."'" ;  		
- 		$result = $db->query($query);
+ 		$error ="";
+ 		$query = "SELECT Id, Nombre, Contrasena FROM usuario WHERE Email = '". $args['email']."' and Contrasena = '".$args['contrasena']."'" ;  	
+ 		$result = $db->query($query); 		
+ 		if($result->rowCount()){
+ 			$error= 101;
+ 		}else{
+ 			$error= 102;
+ 		}
 		return $response->withJson(
  			[
- 				"status" => 101,
+ 				"status" => $error,
  				"data" => $result->fetchAll(),
- 				"message" => "Login ok",
+ 				"message" => "Login",
  			], 200
  		);
  	}
