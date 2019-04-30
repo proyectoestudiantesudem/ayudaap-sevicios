@@ -2,9 +2,8 @@
 require_once "../vendor/autoload.php";
 
 use Ayudapp\Controllers\ContactController;
-
 use Ayudapp\Controllers\AlertasController;
-use Ayudapp\Controllers\UsuariosController;
+use Ayudapp\Controllers\UsuarioController;
 use Ayudapp\Controllers\CirugiaUsuarioController;
 use Ayudapp\Controllers\EPSController;
 use Ayudapp\Controllers\MedicamentoController;
@@ -26,25 +25,31 @@ $container["ContactController"] = function ($container) {
 };
 
 
+
 $container["CirugiaUsuarioController"] = function ($container) {
 	return new CirugiaUsuarioController($container);
 };
+
 
 $container["EPSController"] = function ($container) {
 	return new EPSController($container);
 };
 
-
-$container["AlertasController"] = function ($container) {
-	return new AlertasController($container);
-
 $container["UsuarioController"] = function ($container) {
 	return new UsuarioController($container);
 };
 
+/*
+$container["AlertasController"] = function ($container) {
+	return new AlertasController($container);
+
+*/
+
+
 $container["MedicamentoController"] = function ($container) {
 	return new MedicamentoController($container);
 };
+
 
 require_once BASE . "src". DS ."routes.php";
 $app->run();
