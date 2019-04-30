@@ -2,6 +2,7 @@
 require_once "../vendor/autoload.php";
 
 use Ayudapp\Controllers\ContactController;
+use Ayudapp\Controllers\loginController;
 use Ayudapp\Controllers\AlertasController;
 use Ayudapp\Controllers\UsuarioController;
 use Ayudapp\Controllers\CirugiaUsuarioController;
