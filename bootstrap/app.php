@@ -2,6 +2,7 @@
 require_once "../vendor/autoload.php";
 
 use Ayudapp\Controllers\ContactController;
+use Ayudapp\Controllers\loginController;
 
 use Ayudapp\Controllers\AlertasController;
 use Ayudapp\Controllers\UsuariosController;
@@ -25,6 +26,13 @@ $container["ContactController"] = function ($container) {
 	return new ContactController($container);
 };
 
+/*
+
+$container["LoginController"] = function ($container) {
+	return new LoginController($container);
+};
+*/
+
 
 $container["CirugiaUsuarioController"] = function ($container) {
 	return new CirugiaUsuarioController($container);
@@ -45,6 +53,7 @@ $container["UsuarioController"] = function ($container) {
 $container["MedicamentoController"] = function ($container) {
 	return new MedicamentoController($container);
 };
+
 
 require_once BASE . "src". DS ."routes.php";
 $app->run();

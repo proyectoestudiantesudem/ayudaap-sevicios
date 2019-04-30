@@ -1,6 +1,12 @@
 <?php
 
 
+$app->get('/contact', "ContactController:all");
+$app->get('/contact/{id}', "ContactController:find");
+
+$app->get('/usuario/{email}/{contrasena}', "LoginController:find");
+
+
 $app->get('/tipodealerta', "AlertasController:all");
 $app->get('/tipodealerta/{id}', "AlertasController:find");
 $app->get('/crear_tipodealerta/{Descripcion}', "AlertasController:agregar");
@@ -44,3 +50,4 @@ $app->get('/usuario/{id}', "UsuarioController:find");
 $app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
 $app->get('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");
 
+$app->get('/usuario',"LoginController:login");
