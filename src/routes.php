@@ -46,6 +46,13 @@ $app->get('/actualizar_contacto/{id}/{Nombre}/{IdParentesco}/{Celular}/
 
 $app->get('/usuario', "UsuarioController:all");
 $app->get('/medicamento', "MedicamentoController:all");
+$app->get('/buscar_medicamento/{id}', "MedicamentoController:find");
+$app->get('/crear_medicamento/{idusuario}/{idmedicamento}', "MedicamentoController:create");
+$app->get('/eliminar_medicamento/{id}', "MedicamentoController:delete");
+
+$app->post('/login', "UsuarioController:login");
+$app->get('/login', "UsuarioController:login");
+
 $app->get('/usuario/{id}', "UsuarioController:find");
 $app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
 $app->get('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");

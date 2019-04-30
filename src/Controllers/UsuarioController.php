@@ -57,6 +57,21 @@
  	}
 
 
+ 	function login($request, $response){
+ 		$args = $request->getParams(); 		
+ 		$db = $this->db;
+ 		$query = "SELECT Id, Nombre, Contrasena FROM usuario WHERE Email = '". $args['email']."' and Contrasena = '".$args['contrasena']."'" ;  		
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Login ok",
+ 			], 200
+ 		);
+ 	}
+
+
  }
 
 
