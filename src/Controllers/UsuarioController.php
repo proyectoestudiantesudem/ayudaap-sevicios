@@ -30,6 +30,27 @@
  		);
  	}
 
+
+ 	function find_email($request, $response){
+ 		$args = $request->getParams();
+
+ 		$db = $this->db;
+ 		$query = "SELECT * FROM usuario WHERE Email = '". $args['Email']."'"; 
+ 		$result = $db->query($query);
+ 		if($result->rowCount()){
+ 			$error= 101;
+ 		}else{
+ 			$error= 102;
+ 		}
+		return $response->withJson(
+ 			[
+ 				"status" => $error,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Buscar Usuario",
+ 			], 200
+ 		);
+ 	}
+
  	function delete($request, $response, $args){
  		$db = $this->db;
  		$query = "DELETE FROM usuario WHERE id = ". $args['id'].""; 
@@ -43,10 +64,15 @@
  		);
  	}
 
- 	function update($request, $response, $args){
+ 	function update($request, $response){
  		$args = $request->getParams();
+
  		$db = $this->db;
- 		$query = "UPDATE usuario set IdRh = ". $args['idRh'].", IdEps =".$args ['IdEps'].", IdTipoDeDocumento =".$args['IdTipoDeDocumento'].", NroDeDocumento=".$args['NroDeDocumento'].", Nombre=".$args['Nombre'].", Apellido=".$args['Apellido'].",TelefonoFijo=".$args['TelefonoFijo'].", Celular=".$args['Celular'].", Email = ".$args['Email'].", Direccion =".$args['Direccion'].", Contrasena=".$args['Contrasena'].", FechaDeNacimiento =".$args['FechaDeNacimiento']." where id=". $args['id'].""; 
+ 		$query = "UPDATE usuario set IdRh = ". $args['IdRh'].", IdEps =".$args ['IdEps'].", IdTipoDeDocumento =".$args['IdTipoDeDocumento'].", NroDeDocumento='".$args['NroDeDocumento']."', Nombre='".$args['Nombre']."', Apellido='".$args['Apellido']."',TelefonoFijo='".$args['TelefonoFijo']."', Celular='".$args['Celular']."', Email = '".$args['Email']."', Direccion ='".$args['Direccion']."', Contrasena='".$args['Contrasena']."', FechaDeNacimiento ='".$args['FechaDeNacimiento']."' where id=". $args['id']; 
+
+ 		
+
+ 		
  		$result = $db->query($query);
 		return $response->withJson(
  			[
@@ -59,7 +85,7 @@
 
 
  	function create($request, $response){
- 		$args = $request->getParams(); 		
+ 		$args = $request->getParams(); 	 		
  		$db = $this->db;
  		$query = "INSERT INTO `usuario` (`IdRh`, `IdEps`, `IdTipoDeDocumento`, `NroDeDocumento`, `Nombre`, `Apellido`, `TelefonoFijo`, `Celular`, `Email`, `Direccion`, `Contrasena`, `FechaDeNacimiento`) VALUES ('".$args['IdRh']."', '".$args ['IdEps']."', '".$args['IdTipoDeDocumento']."', '".$args['NroDeDocumento']."', '".$args['Nombre']."', '".$args['Apellido']."', '".$args['TelefonoFijo']."', '".$args['Celular']."', '".$args['Email']."', '".$args['Direccion']."', '".$args['Contrasena']."', '".$args['FechaDeNacimiento']."')";
 

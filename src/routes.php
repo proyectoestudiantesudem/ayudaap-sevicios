@@ -48,15 +48,12 @@ $app->post('/login', "UsuarioController:login");
 $app->get('/login', "UsuarioController:login");
 
 $app->get('/usuario/{id}', "UsuarioController:find");
+$app->post('/buscar_usuario_email', "UsuarioController:find_email");
 $app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
-
+$app->post('/editar_usuario', "UsuarioController:update");
 $app->post('/crear_usuario', "UsuarioController:create");
 
-/*$app->post('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");*/
 
-
-
-/*$app->post('/crear_usuario/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:create");*/
 
 
 
