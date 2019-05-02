@@ -25,7 +25,7 @@
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Usuarios cuyo Id es " .$args['id']. "",
+ 				"message" => "Usuario encontrado",
  			], 200
  		);
  	}
@@ -38,12 +38,13 @@
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Usuario de Id: " .$args['id']. " ha sido eliminado.",
+ 				"message" => "Usuario eliminado",
  			], 200
  		);
  	}
 
  	function update($request, $response, $args){
+ 		$args = $request->getParams();
  		$db = $this->db;
  		$query = "UPDATE usuario set IdRh = ". $args['idRh'].", IdEps =".$args ['IdEps'].", IdTipoDeDocumento =".$args['IdTipoDeDocumento'].", NroDeDocumento=".$args['NroDeDocumento'].", Nombre=".$args['Nombre'].", Apellido=".$args['Apellido'].",TelefonoFijo=".$args['TelefonoFijo'].", Celular=".$args['Celular'].", Email = ".$args['Email'].", Direccion =".$args['Direccion'].", Contrasena=".$args['Contrasena'].", FechaDeNacimiento =".$args['FechaDeNacimiento']." where id=". $args['id'].""; 
  		$result = $db->query($query);
@@ -51,7 +52,23 @@
  			[
  				"status" => 101,
  				"data" => $result->fetchAll(),
- 				"message" => "Usuario de Id: " .$args['id']. " ha sido actualizado.",
+ 				"message" => "Usuario actualizado",
+ 			], 200
+ 		);
+ 	}
+
+
+ 	function create($request, $response){
+ 		$args = $request->getParams(); 		
+ 		$db = $this->db;
+ 		$query = "INSERT INTO `usuario` (`IdRh`, `IdEps`, `IdTipoDeDocumento`, `NroDeDocumento`, `Nombre`, `Apellido`, `TelefonoFijo`, `Celular`, `Email`, `Direccion`, `Contrasena`, `FechaDeNacimiento`) VALUES ('".$args['IdRh']."', '".$args ['IdEps']."', '".$args['IdTipoDeDocumento']."', '".$args['NroDeDocumento']."', '".$args['Nombre']."', '".$args['Apellido']."', '".$args['TelefonoFijo']."', '".$args['Celular']."', '".$args['Email']."', '".$args['Direccion']."', '".$args['Contrasena']."', '".$args['FechaDeNacimiento']."')";
+
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Usuario creado",
  			], 200
  		);
  	}
@@ -76,6 +93,14 @@
  			], 200
  		);
  	}
+
+
+
+
+
+
+ 
+
 
 
  }

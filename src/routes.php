@@ -49,5 +49,14 @@ $app->get('/login', "UsuarioController:login");
 
 $app->get('/usuario/{id}', "UsuarioController:find");
 $app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
-$app->get('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");
+
+$app->post('/crear_usuario', "UsuarioController:create");
+
+/*$app->post('/editar_usuario/{id}/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:update");*/
+
+
+
+/*$app->post('/crear_usuario/{IdRh}/{IdEps}/{IdTipoDeDocumento}/{NroDeDocumento}/{Nombre}/{Apellido}/{TelefonoFijo}/{Celular}/{Email}/{Direccion}/{Contrasena}/{FechaDeNacimiento}', "UsuarioController:create");*/
+
+
 
