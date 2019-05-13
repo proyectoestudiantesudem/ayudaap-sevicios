@@ -40,17 +40,17 @@ $container["UsuarioController"] = function ($container) {
 	return new UsuarioController($container);
 };
 
-/*
-$container["AlertasController"] = function ($container) {
-	return new AlertasController($container);
-
-*/
-
 
 $container["MedicamentoController"] = function ($container) {
 	return new MedicamentoController($container);
 };
 
+
+
+$container["AlertasController"] = function ($container) {
+	return new AlertasController($container);
+
+};
 
 require_once BASE . "src". DS ."routes.php";
 $app->run();

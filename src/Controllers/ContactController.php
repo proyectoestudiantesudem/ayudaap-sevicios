@@ -58,6 +58,7 @@
  	}
 
  	function update($request, $response, $args){
+
  		$db = $this->db;
  		$query = "UPDATE contactos SET Nombre = ". $args['Nombre'].", IdParentesco = ". $args['IdParentesco'].", 
  					Celular = ". $args['Celular'].", IdTipoContacto = ". $args['IdTipoContacto'].", 
@@ -71,5 +72,18 @@
  			], 200
  		);
  	}
+
+ 	function findContactByUserId($request, $response, $args){ 		
+	    $db = $this->db;
+	    $query = "SELECT * FROM contactos WHERE IdUsuario = ". $args['IdUsuario'];	    
+	    $result = $db->query($query);
+	  	return $response->withJson(
+	      [
+	        "status" => 101,
+	        "data" => $result->fetchAll(),
+	        "message" => "Find contact by user id"
+	      ], 200
+	    );
+	  }
  }
 
