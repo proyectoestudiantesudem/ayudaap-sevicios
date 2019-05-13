@@ -30,11 +30,11 @@
  		);
  	}
 
- 	function add($request, $response, $args){
+ 	function add($request, $response){
  		$db = $this->db;
- 		$query = "INSERT INTO contactos (Nombre, IdParentesco, Celular, IdTipoContacto, Prioridad) VALUES ('".$args['Nombre']."',". $args['IdParentesco'].", ". $args['Celular'].", ". $args['IdTipoContacto'].", ". $args['Prioridad'].")"; 
- 		$result = $db->query($query);
- 		echo $query;
+ 		$args = $request->getParams();  		
+ 		$query = "INSERT INTO contactos (Nombre, IdParentesco, Celular, IdTipoContacto, Prioridad, IdUsuario) VALUES ('".$args['Nombre']."',". $args['IdParentesco'].", '". $args['Celular']."', ". $args['IdTipoContacto'].", ". $args['Prioridad'].", ". $args['IdUsuario'].")"; 
+ 		$result = $db->query($query); 	
 		return $response->withJson(
  			[
  				"status" => 101,

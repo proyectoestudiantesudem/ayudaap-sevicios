@@ -30,7 +30,7 @@ $app->get('/contacto', "ContactController:all");
 $app->get('/contacto/{id}', "ContactController:find");
 $app->get('/contacto_usuario/{IdUsuario}', "ContactController:findContactByUserId");
 $app->get('/eliminar_contacto/{id}', "ContactController:delete");
-$app->get('/crear_contacto/{Nombre}/{IdParentesco}/{Celular}/{IdTipoContacto}/{Prioridad}', "ContactController:add");
+$app->post('/crear_contacto', "ContactController:add");
 $app->get('/actualizar_contacto/{id}/{Nombre}/{IdParentesco}/{Celular}/{IdTipoContacto}/{Prioridad}', "ContactController:update");
 
 
