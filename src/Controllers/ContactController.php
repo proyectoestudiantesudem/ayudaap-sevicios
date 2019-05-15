@@ -88,5 +88,19 @@
 	      ], 200
 	    );
 	  }
+
+	function findPhoneNumberByUser($request, $response){
+		$args = $request->getParams();
+	    $db = $this->db;
+	    $query = "SELECT celular FROM contactos WHERE IdUsuario = ". $args['IdUsuario']." limit 1";
+	    $result = $db->query($query);
+	  	return $response->withJson(
+	      [
+	        "status" => 101,
+	        "data" => $result->fetchAll(),
+	        "message" => "Find phoneContact by  Userid"
+	      ], 200
+	    );
+  }
  }
 

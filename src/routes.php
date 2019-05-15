@@ -29,6 +29,9 @@ $app->get('/editar_eps/{id}/{Nombre}', "EPSController:update");
 $app->get('/contacto', "ContactController:all");
 $app->get('/contacto/{id}', "ContactController:find");
 $app->post('/contacto_usuario', "ContactController:findContactByUserId");
+$app->post('/telefono_contacto_usuario', "ContactController:findPhoneNumberByUser");
+
+
 $app->post('/eliminar_contacto', "ContactController:delete");
 $app->post('/crear_contacto', "ContactController:add");
 $app->post('/actualizar_contacto', "ContactController:update");
