@@ -28,10 +28,10 @@ $app->get('/editar_eps/{id}/{Nombre}', "EPSController:update");
 
 $app->get('/contacto', "ContactController:all");
 $app->get('/contacto/{id}', "ContactController:find");
-$app->get('/contacto_usuario/{IdUsuario}', "ContactController:findContactByUserId");
-$app->get('/eliminar_contacto/{id}', "ContactController:delete");
+$app->post('/contacto_usuario', "ContactController:findContactByUserId");
+$app->post('/eliminar_contacto', "ContactController:delete");
 $app->post('/crear_contacto', "ContactController:add");
-$app->get('/actualizar_contacto/{id}/{Nombre}/{IdParentesco}/{Celular}/{IdTipoContacto}/{Prioridad}', "ContactController:update");
+$app->post('/actualizar_contacto', "ContactController:update");
 
 
 $app->get('/usuario', "UsuarioController:all");

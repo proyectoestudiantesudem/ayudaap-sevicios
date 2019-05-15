@@ -44,8 +44,9 @@
  		);
  	}
 
- 	function delete($request, $response, $args){
+ 	function delete($request, $response){
  		$db = $this->db;
+ 		$args = $request->getParams();  
  		$query = "DELETE FROM contactos WHERE id = ". $args['id'].""; 
  		$result = $db->query($query);
 		return $response->withJson(
@@ -57,7 +58,8 @@
  		);
  	}
 
- 	function update($request, $response, $args){
+ 	function update($request, $response){
+ 		$args = $request->getParams();  
 
  		$db = $this->db;
  		$query = "UPDATE contactos SET Nombre = ". $args['Nombre'].", IdParentesco = ". $args['IdParentesco'].", 
@@ -73,7 +75,8 @@
  		);
  	}
 
- 	function findContactByUserId($request, $response, $args){ 		
+ 	function findContactByUserId($request, $response){ 
+ 		$args = $request->getParams();  		
 	    $db = $this->db;
 	    $query = "SELECT * FROM contactos WHERE IdUsuario = ". $args['IdUsuario'];	    
 	    $result = $db->query($query);
