@@ -31,10 +31,9 @@
  	}
 
 
- 	function find_email($request, $response){
- 		$args = $request->getParams();
-
+ 	function find_email($request, $response){ 		
  		$db = $this->db;
+ 		$args = $request->getParams();
  		$query = "SELECT * FROM usuario WHERE Email = '". $args['Email']."'"; 
  		$result = $db->query($query);
  		if($result->rowCount()){
@@ -65,14 +64,10 @@
  	}
 
  	function update($request, $response){
- 		$args = $request->getParams();
-
  		$db = $this->db;
+ 		$args = $request->getParams(); 		
  		$query = "UPDATE usuario set IdRh = ". $args['IdRh'].", IdEps =".$args ['IdEps'].", IdTipoDeDocumento =".$args['IdTipoDeDocumento'].", NroDeDocumento='".$args['NroDeDocumento']."', Nombre='".$args['Nombre']."', Apellido='".$args['Apellido']."',TelefonoFijo='".$args['TelefonoFijo']."', Celular='".$args['Celular']."', Email = '".$args['Email']."', Direccion ='".$args['Direccion']."', Contrasena='".$args['Contrasena']."', FechaDeNacimiento ='".$args['FechaDeNacimiento']."' where id=". $args['id']; 
 
- 		
-
- 		
  		$result = $db->query($query);
 		return $response->withJson(
  			[
@@ -84,9 +79,9 @@
  	}
 
 
- 	function create($request, $response){
- 		$args = $request->getParams(); 	 		
+ 	function create($request, $response){ 		 	 		
  		$db = $this->db;
+ 		$args = $request->getParams();
  		$query = "INSERT INTO `usuario` (`IdRh`, `IdEps`, `IdTipoDeDocumento`, `NroDeDocumento`, `Nombre`, `Apellido`, `TelefonoFijo`, `Celular`, `Email`, `Direccion`, `Contrasena`, `FechaDeNacimiento`) VALUES ('".$args['IdRh']."', '".$args ['IdEps']."', '".$args['IdTipoDeDocumento']."', '".$args['NroDeDocumento']."', '".$args['Nombre']."', '".$args['Apellido']."', '".$args['TelefonoFijo']."', '".$args['Celular']."', '".$args['Email']."', '".$args['Direccion']."', '".$args['Contrasena']."', '".$args['FechaDeNacimiento']."')";
 
  		$result = $db->query($query);
@@ -101,8 +96,8 @@
 
 
  	function login($request, $response){
- 		$args = $request->getParams(); 		
  		$db = $this->db;
+ 		$args = $request->getParams(); 		 		
  		$error ="";
  		$query = "SELECT Id, Nombre, Contrasena FROM usuario WHERE Email = '". $args['email']."' and Contrasena = '".$args['contrasena']."'" ;  	
  		$result = $db->query($query); 		
@@ -119,7 +114,6 @@
  			], 200
  		);
  	}
-
  }
 
 
