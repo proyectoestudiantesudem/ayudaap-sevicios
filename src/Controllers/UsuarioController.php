@@ -95,6 +95,21 @@
  	}
 
 
+ 	function create_usuario($request, $response, $args){ 		 	 		
+ 		$db = $this->db; 
+ 		$query = "INSERT INTO `usuario` (`IdRh`, `IdEps`, `IdTipoDeDocumento`, `NroDeDocumento`, `Nombre`, `Apellido`, `TelefonoFijo`, `Celular`, `Email`, `Direccion`, `Contrasena`, `FechaDeNacimiento`) VALUES (1,1,1, '999999', '".$args['Nombre']."', '-', '3013493403', '".$args['Celular']."', '".$args['Email']."', 'calle 40 # 33-80', '".$args['Contrasena']."', '200-01-01')";
+
+ 		$result = $db->query($query);
+		return $response->withJson(
+ 			[
+ 				"status" => 101,
+ 				"data" => $result->fetchAll(),
+ 				"message" => "Usuario creado",
+ 			], 200
+ 		);
+ 	}
+
+
  	function login($request, $response){
  		$db = $this->db;
  		$args = $request->getParams(); 		 		

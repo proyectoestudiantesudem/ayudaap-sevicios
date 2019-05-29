@@ -26,11 +26,9 @@ $container["ContactController"] = function ($container) {
 };
 
 
-
 $container["CirugiaUsuarioController"] = function ($container) {
 	return new CirugiaUsuarioController($container);
 };
-
 
 $container["EPSController"] = function ($container) {
 	return new EPSController($container);
@@ -40,11 +38,9 @@ $container["UsuarioController"] = function ($container) {
 	return new UsuarioController($container);
 };
 
-
 $container["MedicamentoController"] = function ($container) {
 	return new MedicamentoController($container);
 };
-
 
 
 $container["AlertasController"] = function ($container) {

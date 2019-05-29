@@ -51,6 +51,9 @@ $app->post('/buscar_usuario_email', "UsuarioController:find_email");
 $app->get('/eliminar_usuario/{id}', "UsuarioController:delete");
 $app->post('/editar_usuario', "UsuarioController:update");
 $app->post('/crear_usuario', "UsuarioController:create");
+$app->get('/crear_usuario_mg/{Email}/{Contrasena}/{Nombre}/{Celular}', "UsuarioController:create_usuario");
+
+
 
 
 
